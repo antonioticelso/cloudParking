@@ -3,6 +3,7 @@ package com.github.antonioticelso.cloudParking.service;
 import com.github.antonioticelso.cloudParking.model.Parking;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -31,6 +32,16 @@ public class ParkingService {
 
     public Parking findById(String id) {
         return parkingMap.get(id);
+    }
+
+    public Parking create(Parking parkingCreate) {
+        String id = getUUID();
+        parkingCreate.setId(id);
+        parkingCreate.setEntryDate(LocalDateTime.now());
+        parkingMap.put(id, parkingCreate);
+
+        return parkingCreate;
+
     }
 
 }

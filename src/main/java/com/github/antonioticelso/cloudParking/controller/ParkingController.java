@@ -1,14 +1,13 @@
 package com.github.antonioticelso.cloudParking.controller;
 
 import com.github.antonioticelso.cloudParking.model.Parking;
+import com.github.antonioticelso.cloudParking.model.dto.ParkingCreateDTO;
 import com.github.antonioticelso.cloudParking.model.dto.ParkingDTO;
 import com.github.antonioticelso.cloudParking.model.mapper.ParkingMapper;
 import com.github.antonioticelso.cloudParking.service.ParkingService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
@@ -42,6 +41,17 @@ public class ParkingController {
         ParkingDTO result = parkingMapper.toParkingDTO(parking);
 
         return ResponseEntity.ok(result);
+
+    }
+
+    @PostMapping
+    public ResponseEntity<ParkingDTO> create(@RequestBody ParkingCreateDTO dto) {
+
+        Parking parkingCreate = parkingMapper.toParkingCreate(dto);
+        Parking parking = service.create(parkingCreate);
+        ParkingDTO result = parkingMapper.toParkingDTO(parking);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
 
     }
 

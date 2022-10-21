@@ -1,6 +1,7 @@
 package com.github.antonioticelso.cloudParking.model.mapper;
 
 import com.github.antonioticelso.cloudParking.model.Parking;
+import com.github.antonioticelso.cloudParking.model.dto.ParkingCreateDTO;
 import com.github.antonioticelso.cloudParking.model.dto.ParkingDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,14 @@ public class ParkingMapper {
 
     public List<ParkingDTO> toParkingDTOList(List<Parking> parkingList) {
         return parkingList.stream().map(this::toParkingDTO).collect(Collectors.toList());
+    }
+
+    public Parking toParking(ParkingDTO dto) {
+        return MODEL_MAPPER.map(dto, Parking.class);
+    }
+
+    public Parking toParkingCreate(ParkingCreateDTO dto) {
+        return MODEL_MAPPER.map(dto, Parking.class);
     }
 
 }
