@@ -4,10 +4,13 @@ import com.github.antonioticelso.cloudParking.model.Parking;
 import com.github.antonioticelso.cloudParking.model.dto.ParkingDTO;
 import com.github.antonioticelso.cloudParking.model.mapper.ParkingMapper;
 import com.github.antonioticelso.cloudParking.service.ParkingService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -23,12 +26,22 @@ public class ParkingController {
     }
 
     @GetMapping
-    public List<ParkingDTO> findAll() {
+    public ResponseEntity<List<ParkingDTO>> findAll() {
 
         List<Parking> parkingList = service.findAll();
         List<ParkingDTO> result = parkingMapper.toParkingDTOList(parkingList);
 
-        return result;
+        return ResponseEntity.ok(result);
+
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ParkingDTO> findById(@PathVariable String id) {
+
+        Parking parking = service.findById(id);
+        ParkingDTO result = parkingMapper.toParkingDTO(parking);
+
+        return ResponseEntity.ok(result);
 
     }
 
