@@ -5,6 +5,8 @@ import com.github.antonioticelso.cloudParking.model.dto.ParkingCreateDTO;
 import com.github.antonioticelso.cloudParking.model.dto.ParkingDTO;
 import com.github.antonioticelso.cloudParking.model.mapper.ParkingMapper;
 import com.github.antonioticelso.cloudParking.service.ParkingService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/parking")
+@Api(tags = "Parking Controller")
 public class ParkingController {
 
     private final ParkingService service;
@@ -25,6 +28,7 @@ public class ParkingController {
     }
 
     @GetMapping
+    @ApiOperation("Find all parkings")
     public ResponseEntity<List<ParkingDTO>> findAll() {
 
         List<Parking> parkingList = service.findAll();
@@ -35,6 +39,7 @@ public class ParkingController {
     }
 
     @GetMapping("/{id}")
+    @ApiOperation("Find by parking for id")
     public ResponseEntity<ParkingDTO> findById(@PathVariable String id) {
 
         Parking parking = service.findById(id);
@@ -45,6 +50,7 @@ public class ParkingController {
     }
 
     @PostMapping
+    @ApiOperation("New parkings")
     public ResponseEntity<ParkingDTO> create(@RequestBody ParkingCreateDTO dto) {
 
         Parking parkingCreate = parkingMapper.toParkingCreate(dto);
