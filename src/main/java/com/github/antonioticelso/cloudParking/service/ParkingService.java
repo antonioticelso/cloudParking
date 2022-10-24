@@ -14,13 +14,13 @@ public class ParkingService {
     private static Map<String, Parking> parkingMap = new HashMap<>();
 
     static {
-        var id1 = getUUID();
-        Parking parking1 = new Parking(id1, "WBC-007", "DF", "BMW", "PRETA");
-        parkingMap.put(id1, parking1);
+//        var id1 = getUUID();
+//        Parking parking1 = new Parking(id1, "WBC-007", "DF", "BMW", "PRETA");
+//        parkingMap.put(id1, parking1);
 
-        var id2 = getUUID();
-        Parking parking2 = new Parking(id2, "JCO-171", "DF", "PARATI", "PRATA");
-        parkingMap.put(id2, parking2);
+//        var id2 = getUUID();
+//        Parking parking2 = new Parking(id2, "JCO-171", "DF", "PARATI", "PRATA");
+//        parkingMap.put(id2, parking2);
     }
 
     public List<Parking> findAll() {
