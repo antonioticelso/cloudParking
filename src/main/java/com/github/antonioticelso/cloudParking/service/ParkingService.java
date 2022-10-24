@@ -64,4 +64,12 @@ public class ParkingService {
 
     }
 
+    public Parking exit(String id) {
+        Parking parking = findById(id);
+        parking.setExitDate(LocalDateTime.now());
+//        calculo do valor de saida
+
+        return null;
+    }
+
 }
