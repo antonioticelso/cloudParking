@@ -1,5 +1,6 @@
 package com.github.antonioticelso.cloudParking.service;
 
+import com.github.antonioticelso.cloudParking.exception.ParkingNotFoundException;
 import com.github.antonioticelso.cloudParking.model.Parking;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +32,11 @@ public class ParkingService {
     }
 
     public Parking findById(String id) {
-        return parkingMap.get(id);
+        Parking parking = parkingMap.get(id);
+        if (parking == null) {
+            throw new ParkingNotFoundException(id);
+        }
+        return parking;
     }
 
     public Parking create(Parking parkingCreate) {
@@ -41,6 +46,21 @@ public class ParkingService {
         parkingMap.put(id, parkingCreate);
 
         return parkingCreate;
+
+    }
+
+    public void delete(String id) {
+        Parking parking = findById(id);
+        parkingMap.remove(id);
+
+    }
+
+    public Parking update(String id, Parking parkingCreate) {
+        Parking parking = findById(id);
+        parking.setColor(parkingCreate.getColor());
+        parkingMap.replace(id, parking);
+
+        return parking;
 
     }
 
