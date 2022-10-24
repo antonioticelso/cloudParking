@@ -3,12 +3,16 @@ package com.github.antonioticelso.cloudParking.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
+@Entity
 public class Parking {
 
+    @Id
     private String id;
     private String license;
     private String state;
