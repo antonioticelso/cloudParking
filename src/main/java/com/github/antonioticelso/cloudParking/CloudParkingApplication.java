@@ -10,5 +10,5 @@ public class CloudParkingApplication {
 		SpringApplication.run(CloudParkingApplication.class, args);
 	}
 
-//	fim da aula 4
+//	aula 15 - jpa
 }
