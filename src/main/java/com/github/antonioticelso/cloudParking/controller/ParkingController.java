@@ -74,10 +74,10 @@ public class ParkingController {
     }
 
     @PostMapping("/{id}")
-    @ApiOperation("Exit parkings")
-    public ResponseEntity<ParkingDTO> exit(@PathVariable String id) {
+    @ApiOperation("Check Out parkings")
+    public ResponseEntity<ParkingDTO> checkOut(@PathVariable String id) {
 
-        Parking parking = service.exit(id);
+        Parking parking = service.checkOut(id);
         ParkingDTO result = parkingMapper.toParkingDTO(parking);
 //        calculo do valor de saida
 

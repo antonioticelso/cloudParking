@@ -61,7 +61,7 @@ class ParkingControllerTestTest {
     }
 
     @Test
-    void exit() {
+    void checkOut() {
     }
 
     @Test
