@@ -10,5 +10,4 @@ public class CloudParkingApplication {
 		SpringApplication.run(CloudParkingApplication.class, args);
 	}
 
-//	aula 15 - jpa
 }

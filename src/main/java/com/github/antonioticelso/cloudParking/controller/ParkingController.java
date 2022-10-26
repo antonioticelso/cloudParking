@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -79,7 +78,6 @@ public class ParkingController {
 
         Parking parking = service.checkOut(id);
         ParkingDTO result = parkingMapper.toParkingDTO(parking);
-//        calculo do valor de saida
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
 
