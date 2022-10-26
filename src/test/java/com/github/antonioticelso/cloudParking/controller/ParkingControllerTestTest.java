@@ -25,10 +25,11 @@ class ParkingControllerTestTest extends AbstractContainerBase {
     @Test
     void whenFindAllThenCheckResult() {
         RestAssured.given()
+                .header("authorization","Basic sdtr")
                 .when()
                 .get("/parking")
                 .then()
-                .statusCode( HttpStatus.OK.value());
+                .statusCode(HttpStatus.OK.value());
 //                .body("license[0]", Matchers.equalTo("WBC-007"));
 //                .extract().response().body().prettyPrint();
     }
